@@ -53,16 +53,31 @@ Finally, it is possible to write program code or data into SNES memory, and to e
 The SGB cartridge contains a Game Boy system on chip, with its normal CPU and video and sound controller.
 It also has a bridge circuit, the ICD2, to translate joypad input, video signal, and control packets between the SNES and GB as well as a system software ROM that runs on the SNES.
 
-### Clock Speed
+### SGB2
 
-Because the SGB is synchronized to the SNES CPU, the Game Boy Master Clock is directly chained to the SNES Master Clock.
-In result, the Game Boy CPU, video controller, timers, and sound frequencies will be all operated approx 2.4% faster than handheld systems.
-Basically, this should be no problem, and the game will just run a little bit faster.
-However sensitive musicians may notice that sound frequencies are a bit too high, particularly in programs that use GB sound alongside Kankichi.
+The SGB2 is an updated version of the Super Game Boy that was released only in Japan.
+
+The most significant difference between the SGB and SGB2 is that the latter includes a dedicated clock circuit instead of relying on dividing the host SNES clock.
+This results in the SGB2 running at precisely the same clock frequency of the handheld Game Boy.
+Additionally, the SGB2 includes a builtin EXT. port and supports link cable features just like the handheld units.
+
+The SGB2 can be distinguished visually by its semi-transparent blue shell and the presence of the EXT. port on one edge.
+The EXT. port is the smaller variant introduced with the MGB.
+
+### SGB Clock Speed
+
+The original model SGB derives its clock from the host system clock via simple division.
+As the SNES system clock is not a perfect multiple of the (handheld) Game Boy clock frequency, this results in the SGB clock frequency only approximating that of the handheld Game Boy.
+Further, as the PAL and NTSC SNES models run at different clock speeds, the SGB clock frequency deviation differs across the SNES regional models.
+
+|    Model |    Base Frequency | SGB Frequency | Deviation |
+|----------|-------------------|---------------|-----------|
+| NTSC SGB | 21.477 MHz (SNES) |     4.295 MHz |    +2.41% |
+|  PAL SGB | 21.281 MHz (SNES) |     4.256 MHz |    +1.48% |
+|     SGB2 | 20.972 MHz (SGB2) |     4.194 MHz |    ~0.00% |
+
+This small difference in clock speed is unlikely to cause significant issues with most software.
+
+Sensitive listeners may notice that sound frequencies are a bit too high, particularly in programs that use GB sound alongside Kankichi.
 Programs that support SGB functions may avoid this effect by reducing frequencies of Game Boy sounds when having detected SGB hardware.
-Also, "PAL version" SNES models which use a 50Hz display refresh rate (rather than 60Hz) result in respectively slower Game Boy timings.
-
-- NTSC SGB: 21.477 MHz Master Clock, 4.2955 MHz GB Master Clock, 2.41% fast
-- PAL SGB: 21.281 MHz Master Clock, 4.2563 MHz GB Master Clock, 1.48% fast
-- NTSC SGB2: Separate 20.972 MHz crystal, correct speed
 
